@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jaloliddin &amp; Zilola — To'y taklifnomasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Great+Vibes&family=Marck+Script&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf7f2;
+    --paper:#fffdfb;
+    --ink:#3a352f;
+    --ink-soft:#6b6259;
+    --mauve:#a99a9a;
+    --mauve-dark:#8a7876;
+    --gold:#b79a6b;
+    --line:#d9cfc4;
+    --shadow: 0 18px 45px -20px rgba(60,45,35,.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 15% 8%, #f3ece2 0%, transparent 45%),
+      radial-gradient(circle at 85% 92%, #efe4d8 0%, transparent 45%),
+      var(--cream);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', 'Georgia', serif;
+    font-size:19px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:0 22px 70px;}
+
+  /* ---------- ornament helpers ---------- */
+  .divider{
+    display:flex;align-items:center;gap:14px;
+    margin:26px auto;width:100%;max-width:340px;
+    color:var(--gold);
+  }
+  .divider::before,.divider::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);
+  }
+  .divider svg{flex:none;width:22px;height:22px;opacity:.85;}
+
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.32em;
+    font-size:12.5px;
+    color:var(--mauve-dark);
+    font-family: Georgia, serif;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-top:52px;
+    text-align:center;
+  }
+  .hero .eyebrow{margin-bottom:10px;}
+  .hero .intro-line{
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:17px;
+    max-width:380px;margin:0 auto 22px;
+  }
+
+  .frame{
+    position:relative;
+    margin:0 auto;
+    max-width:330px;
+    border-radius:6px;
+    padding:14px;
+    background:var(--paper);
+    box-shadow:var(--shadow);
+    border:1px solid var(--line);
+  }
+  .frame::before{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px solid var(--gold);
+    opacity:.55;
+    border-radius:3px;
+    pointer-events:none;
+  }
+  .frame img{
+    display:block;width:100%;height:auto;border-radius:2px;
+  }
+
+  .names{
+    margin:30px 0 4px;
+    font-family:'Great Vibes', cursive;
+    font-size:64px;
+    line-height:1.15;
+    color:var(--mauve-dark);
+  }
+  .names .amp{
+    display:block;
+    font-family:'Marck Script', cursive;
+    font-size:28px;
+    color:var(--gold);
+    margin:2px 0;
+  }
+  .tagline{
+    color:var(--ink-soft);
+    font-size:18px;
+    max-width:400px;
+    margin:14px auto 0;
+  }
+
+  .scroll-cue{
+    margin-top:38px;
+    font-size:13px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:var(--mauve);
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+  }
+  .scroll-cue span.arrow{font-size:20px;animation:bob 1.8s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  /* ---------- section card ---------- */
+  section{margin-top:64px;}
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    padding:34px 26px;
+    text-align:center;
+  }
+  h2{
+    font-weight:600;
+    font-size:28px;
+    margin:0 0 6px;
+    color:var(--ink);
+  }
+  .section-sub{
+    color:var(--ink-soft);
+    font-style:italic;
+    margin-bottom:22px;
+    font-size:16.5px;
+  }
+
+  /* ---------- details ---------- */
+  .details-grid{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    text-align:left;
+    max-width:380px;
+    margin:0 auto;
+  }
+  .detail-item{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:16px 4px;
+    border-bottom:1px dashed var(--line);
+  }
+  .detail-item:last-child{border-bottom:none;}
+  .detail-icon{
+    flex:none;
+    width:42px;height:42px;
+    border-radius:50%;
+    background:linear-gradient(160deg,#f2e9dd,#e7d9c8);
+    display:flex;align-items:center;justify-content:center;
+    font-size:19px;
+    box-shadow:inset 0 0 0 1px var(--line);
+  }
+  .detail-label{
+    font-size:12.5px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:var(--mauve-dark);
+    margin-bottom:2px;
+  }
+  .detail-value{
+    font-size:20px;
+    color:var(--ink);
+  }
+  .detail-value small{
+    display:block;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    font-style:italic;
+    margin-top:2px;
+  }
+  .map-link{
+    display:inline-block;
+    margin-top:6px;
+    font-size:14.5px;
+    color:var(--gold);
+    text-decoration:none;
+    border-bottom:1px solid var(--gold);
+  }
+  .map-link:hover{color:var(--mauve-dark);border-color:var(--mauve-dark);}
+
+  /* ---------- countdown ---------- */
+  .countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:6px;
+  }
+  .cd-box{
+    background:linear-gradient(160deg,#fff,#f4ede2);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 6px;
+    width:74px;
+  }
+  .cd-num{
+    font-size:30px;
+    font-weight:600;
+    color:var(--mauve-dark);
+    font-variant-numeric:tabular-nums;
+  }
+  .cd-label{
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  /* ---------- RSVP ---------- */
+  .rsvp-input{
+    width:100%;
+    max-width:340px;
+    margin:0 auto 20px;
+    display:block;
+    padding:13px 16px;
+    font-family:inherit;
+    font-size:17px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--cream);
+    color:var(--ink);
+    text-align:center;
+  }
+  .rsvp-input:focus{outline:none;border-color:var(--gold);}
+  .rsvp-btns{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    max-width:340px;
+    margin:0 auto;
+  }
+  .btn{
+    font-family:inherit;
+    font-size:18px;
+    padding:15px 20px;
+    border-radius:8px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+    letter-spacing:.01em;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-yes{
+    background:linear-gradient(160deg,#b79a6b,#9c8158);
+    color:#fff;
+    box-shadow:0 10px 22px -10px rgba(150,120,70,.6);
+  }
+  .btn-no{
+    background:transparent;
+    color:var(--mauve-dark);
+    border-color:var(--mauve);
+  }
+  .btn:disabled{opacity:.55;cursor:default;transform:none;}
+  .btn.selected{box-shadow:inset 0 0 0 2px rgba(255,255,255,.4), 0 10px 22px -10px rgba(150,120,70,.6);}
+
+  .rsvp-result{
+    display:none;
+    margin-top:26px;
+    padding:20px;
+    border-radius:8px;
+    font-size:18px;
+  }
+  .rsvp-result.show{display:block;animation:fade .5s ease;}
+  .rsvp-result.yes{background:#f3ecdd;color:#6b5636;border:1px solid #e3d3ae;}
+  .rsvp-result.no{background:#f2ecec;color:#7a6a6a;border:1px solid #dccece;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .rsvp-reset{
+    display:none;
+    margin-top:14px;
+    font-size:14px;
+    color:var(--mauve);
+    background:none;border:none;
+    text-decoration:underline;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .rsvp-reset.show{display:inline-block;}
+
+  footer{
+    text-align:center;
+    margin-top:60px;
+    color:var(--mauve);
+    font-size:15px;
+    font-style:italic;
+  }
+  footer .heart{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">To'y taklifnomasi</div>
+    <p class="intro-line">Hurmatli mehmon, sizni hayotimizdagi eng go'zal kunga — nikoh to'yimizga taklif qilamiz</p>
+
+    <div class="frame">
+      <img src="assets/couple.jpeg" alt="Jaloliddin va Zilola">
+    </div>
+
+    <div class="names">
+      Jaloliddin
+      <span class="amp">va</span>
+      Zilola
+    </div>
+    <p class="tagline">Ikki qalb, bitta yo'l boshlanadi. Ushbu unutilmas kunda yonimizda bo'lishingizni astoydil xohlaymiz.</p>
+
+    <div class="scroll-cue">
+      <span>Batafsil</span>
+      <span class="arrow">&#8595;</span>
+    </div>
+  </header>
+
+  <section id="details">
+    <div class="card">
+      <div class="eyebrow">Tafsilotlar</div>
+      <h2>To'y marosimi</h2>
+      <p class="section-sub">Quyidagi sana va manzilda kutamiz</p>
+
+      <div class="details-grid">
+        <div class="detail-item">
+          <div class="detail-icon">&#128197;</div>
+          <div>
+            <div class="detail-label">Sana</div>
+            <div class="detail-value">2026-yil 1-sentyabr, seshanba</div>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon">&#128336;</div>
+          <div>
+            <div class="detail-label">Boshlanish vaqti</div>
+            <div class="detail-value">Soat 18:00</div>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon">&#128205;</div>
+          <div>
+            <div class="detail-label">Manzil</div>
+            <div class="detail-value">
+              Santini Bar &amp; Terrace
+              <small>Kiyinish tartibi: oqshom uslubi (elegant)</small>
+            </div>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Santini%20Bar%20%26%20Terrace" target="_blank" rel="noopener">Xaritada ko'rish &#8594;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+  </div>
+
+  <section id="countdown">
+    <div class="card">
+      <div class="eyebrow">Sanoq boshlandi</div>
+      <h2>To'yimizgacha</h2>
+      <p class="section-sub">Har bir soniya bizni yaqinlashtiradi</p>
+      <div class="countdown" id="countdown-boxes">
+        <div class="cd-box"><div class="cd-num" id="cd-days">00</div><div class="cd-label">Kun</div></div>
+        <div class="cd-box"><div class="cd-num" id="cd-hours">00</div><div class="cd-label">Soat</div></div>
+        <div class="cd-box"><div class="cd-num" id="cd-mins">00</div><div class="cd-label">Daqiqa</div></div>
+        <div class="cd-box"><div class="cd-num" id="cd-secs">00</div><div class="cd-label">Soniya</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+  </div>
+
+  <section id="rsvp">
+    <div class="card">
+      <div class="eyebrow">RSVP</div>
+      <h2>Kela olasizmi?</h2>
+      <p class="section-sub">Iltimos, javobingizni bildiring — bu biz uchun juda muhim</p>
+
+      <input type="text" id="guest-name" class="rsvp-input" placeholder="Ismingiz (ixtiyoriy)">
+
+      <div class="rsvp-btns" id="rsvp-btns">
+        <button class="btn btn-yes" id="btn-yes">&#10003; Ha, albatta boraman</button>
+        <button class="btn btn-no" id="btn-no">&#10005; Afsuski, kela olmayman</button>
+      </div>
+
+      <div class="rsvp-result yes" id="result-yes">
+        &#127881; Rahmat<span id="name-yes"></span>! Sizni to'yimizda ko'rishdan mamnun bo'lamiz.
+      </div>
+      <div class="rsvp-result no" id="result-no">
+        Tushunarli<span id="name-no"></span>. Qatnasha olmasligingiz achinarli, lekin qalban baribir yoningizdamiz. Rahmat, javobingiz uchun!
+      </div>
+
+      <button class="rsvp-reset" id="rsvp-reset-btn">Javobni o'zgartirish</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="divider"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+    Sizni kutamiz <span class="heart">&#10084;</span> Jaloliddin &amp; Zilola
+  </footer>
+
+</div>
+
+<script>
+  // ---- Countdown ----
+  var WEDDING_DATE = new Date("2026-09-01T18:00:00+05:00").getTime();
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  function tick(){
+    var now = Date.now();
+    var diff = WEDDING_DATE - now;
+    if(diff < 0) diff = 0;
+
+    var days = Math.floor(diff / (1000*60*60*24));
+    var hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    var mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    var secs = Math.floor((diff % (1000*60)) / 1000);
+
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent = pad(mins);
+    document.getElementById('cd-secs').textContent = pad(secs);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ---- RSVP ----
+  var btnYes = document.getElementById('btn-yes');
+  var btnNo = document.getElementById('btn-no');
+  var btnsWrap = document.getElementById('rsvp-btns');
+  var resultYes = document.getElementById('result-yes');
+  var resultNo = document.getElementById('result-no');
+  var resetBtn = document.getElementById('rsvp-reset-btn');
+  var nameInput = document.getElementById('guest-name');
+  var nameYesSpan = document.getElementById('name-yes');
+  var nameNoSpan = document.getElementById('name-no');
+
+  var STORAGE_KEY = 'wedding_rsvp_jaloliddin_zilola';
+
+  function showResult(answer){
+    var name = nameInput.value.trim();
+    var nameSuffix = name ? (', ' + name) : '';
+    nameYesSpan.textContent = nameSuffix;
+    nameNoSpan.textContent = nameSuffix;
+
+    btnsWrap.style.display = 'none';
+    nameInput.disabled = true;
+
+    if(answer === 'yes'){
+      resultYes.classList.add('show');
+      resultNo.classList.remove('show');
+    } else {
+      resultNo.classList.add('show');
+      resultYes.classList.remove('show');
+    }
+    resetBtn.classList.add('show');
+  }
+
+  function saveRSVP(answer){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        answer: answer,
+        name: nameInput.value.trim(),
+        ts: Date.now()
+      }));
+    }catch(e){}
+  }
+
+  btnYes.addEventListener('click', function(){
+    saveRSVP('yes');
+    showResult('yes');
+  });
+
+  btnNo.addEventListener('click', function(){
+    saveRSVP('no');
+    showResult('no');
+  });
+
+  resetBtn.addEventListener('click', function(){
+    try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+    btnsWrap.style.display = 'flex';
+    nameInput.disabled = false;
+    resultYes.classList.remove('show');
+    resultNo.classList.remove('show');
+    resetBtn.classList.remove('show');
+  });
+
+  // restore previous answer on load
+  (function restore(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      if(data && data.name) nameInput.value = data.name;
+      if(data && (data.answer === 'yes' || data.answer === 'no')){
+        showResult(data.answer);
+      }
+    }catch(e){}
+  })();
+</script>
+
+</body>
+</html>
