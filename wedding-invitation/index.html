@@ -9,33 +9,122 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Great+Vibes&family=Marck+Script&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#faf7f2;
-    --paper:#fffdfb;
-    --ink:#3a352f;
-    --ink-soft:#6b6259;
-    --mauve:#a99a9a;
-    --mauve-dark:#8a7876;
-    --gold:#b79a6b;
-    --line:#d9cfc4;
-    --shadow: 0 18px 45px -20px rgba(60,45,35,.35);
+    --cream:#fdf6ea;
+    --paper:#fffbf3;
+    --ink:#3d2a1f;
+    --ink-soft:#7a5f4e;
+    --rose:#b23a56;
+    --rose-deep:#7d2740;
+    --gold:#c9962f;
+    --gold-light:#e8c877;
+    --line:#e7cfa1;
+    --glow1:#f8e8d0;
+    --glow2:#f3dcc0;
+    --icon-bg1:#fbe9d3;
+    --icon-bg2:#f3d9b8;
+    --cd-bg2:#f7e6c9;
+    --yes-bg:#f8ecd0;
+    --yes-fg:#7a5220;
+    --yes-border:#e3c98a;
+    --no-bg:#f7e3e6;
+    --no-fg:#8a4a56;
+    --no-border:#e8c3ca;
+    --btn-yes-fg:#fffaf3;
+    --shadow: 0 20px 48px -20px rgba(120,50,40,.35);
+    --paisley: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='64'%20height='64'%3E%3Cpath%20fill='%23000'%20fill-opacity='0.9'%20d='M32%208%20C43%208%2048%2019%2043%2028%20C39%2035%2030%2037%2023%2033%20C15%2028%2014%2018%2021%2011%20C24%208%2028%208%2032%208%20Z%20M32%208%20C35.5%208%2038%2011%2038%2014.5%20C38%2017%2036%2019%2033.5%2019'/%3E%3C/svg%3E");
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --cream:#241a16;
+      --paper:#2f2119;
+      --ink:#f5e8da;
+      --ink-soft:#d1b6a2;
+      --rose:#e08099;
+      --rose-deep:#f2a6ba;
+      --gold:#e3b768;
+      --gold-light:#f2d29a;
+      --line:#5a4331;
+      --glow1:#33241a;
+      --glow2:#2a1d15;
+      --icon-bg1:#3c2c20;
+      --icon-bg2:#4a3626;
+      --cd-bg2:#3a2a1e;
+      --yes-bg:#3d3016;
+      --yes-fg:#f0d495;
+      --yes-border:#6b551f;
+      --no-bg:#3a2429;
+      --no-fg:#e7b9c2;
+      --no-border:#5c3841;
+      --btn-yes-fg:#2a1d14;
+      --shadow: 0 20px 48px -20px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#241a16;
+    --paper:#2f2119;
+    --ink:#f5e8da;
+    --ink-soft:#d1b6a2;
+    --rose:#e08099;
+    --rose-deep:#f2a6ba;
+    --gold:#e3b768;
+    --gold-light:#f2d29a;
+    --line:#5a4331;
+    --glow1:#33241a;
+    --glow2:#2a1d15;
+    --icon-bg1:#3c2c20;
+    --icon-bg2:#4a3626;
+    --cd-bg2:#3a2a1e;
+    --yes-bg:#3d3016;
+    --yes-fg:#f0d495;
+    --yes-border:#6b551f;
+    --no-bg:#3a2429;
+    --no-fg:#e7b9c2;
+    --no-border:#5c3841;
+    --btn-yes-fg:#2a1d14;
+    --shadow: 0 20px 48px -20px rgba(0,0,0,.6);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
     background:
-      radial-gradient(circle at 15% 8%, #f3ece2 0%, transparent 45%),
-      radial-gradient(circle at 85% 92%, #efe4d8 0%, transparent 45%),
+      radial-gradient(circle at 15% 8%, var(--glow1) 0%, transparent 45%),
+      radial-gradient(circle at 85% 92%, var(--glow2) 0%, transparent 45%),
       var(--cream);
     color:var(--ink);
     font-family:'Cormorant Garamond', 'Georgia', serif;
     font-size:19px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    position:relative;
   }
-  .wrap{max-width:560px;margin:0 auto;padding:0 22px 70px;}
+  /* faint paisley texture, echoing the groom's bandana */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-color:var(--gold);
+    -webkit-mask-image:var(--paisley); mask-image:var(--paisley);
+    -webkit-mask-repeat:repeat; mask-repeat:repeat;
+    -webkit-mask-size:64px 64px; mask-size:64px 64px;
+    opacity:.08;
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:0 22px 0;position:relative;z-index:1;}
+
+  /* ---------- striped ribbon, echoing the groom's chapan ---------- */
+  .stripe-border{
+    height:11px;
+    background:repeating-linear-gradient(115deg,
+      var(--rose) 0 9px,
+      var(--gold) 9px 15px,
+      var(--cream) 15px 27px,
+      var(--line) 27px 31px);
+  }
 
   /* ---------- ornament helpers ---------- */
+  svg.ic{display:block;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;}
+
   .divider{
     display:flex;align-items:center;gap:14px;
     margin:26px auto;width:100%;max-width:340px;
@@ -45,19 +134,24 @@
     content:"";flex:1;height:1px;
     background:linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);
   }
-  .divider svg{flex:none;width:22px;height:22px;opacity:.85;}
+  .divider svg{flex:none;width:26px;height:28px;}
 
   .eyebrow{
     text-transform:uppercase;
     letter-spacing:.32em;
     font-size:12.5px;
-    color:var(--mauve-dark);
+    color:var(--rose);
     font-family: Georgia, serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
   }
+  .eyebrow svg{width:16px;height:19px;color:var(--gold);flex:none;}
 
   /* ---------- hero ---------- */
   .hero{
-    padding-top:52px;
+    padding-top:44px;
     text-align:center;
   }
   .hero .eyebrow{margin-bottom:10px;}
@@ -65,7 +159,7 @@
     font-style:italic;
     color:var(--ink-soft);
     font-size:17px;
-    max-width:380px;margin:0 auto 22px;
+    max-width:380px;margin:0 auto 26px;
   }
 
   .frame{
@@ -75,27 +169,38 @@
     border-radius:6px;
     padding:14px;
     background:var(--paper);
-    box-shadow:var(--shadow);
+    box-shadow:var(--shadow), 0 0 0 8px color-mix(in srgb, var(--gold) 10%, transparent);
     border:1px solid var(--line);
   }
   .frame::before{
     content:"";
     position:absolute; inset:6px;
     border:1px solid var(--gold);
-    opacity:.55;
+    opacity:.6;
     border-radius:3px;
     pointer-events:none;
   }
   .frame img{
     display:block;width:100%;height:auto;border-radius:2px;
   }
+  .frame .corner{
+    position:absolute;
+    width:50px;height:56px;
+    color:var(--gold);
+    stroke-width:1.7;
+  }
+  .frame .corner.tl{top:-22px;left:-18px;transform:rotate(-18deg);}
+  .frame .corner.tr{top:-22px;right:-18px;transform:scaleX(-1) rotate(-18deg);}
+  .frame .corner.bl{bottom:-22px;left:-18px;transform:rotate(160deg) scaleX(-1);color:var(--rose);}
+  .frame .corner.br{bottom:-22px;right:-18px;transform:rotate(200deg);color:var(--rose);}
 
   .names{
-    margin:30px 0 4px;
+    margin:34px 0 4px;
     font-family:'Great Vibes', cursive;
-    font-size:64px;
+    font-size:66px;
     line-height:1.15;
-    color:var(--mauve-dark);
+    color:var(--rose-deep);
+    text-shadow:0 1px 0 color-mix(in srgb, var(--gold) 25%, transparent);
   }
   .names .amp{
     display:block;
@@ -116,21 +221,32 @@
     font-size:13px;
     letter-spacing:.25em;
     text-transform:uppercase;
-    color:var(--mauve);
+    color:var(--gold);
     display:flex;flex-direction:column;align-items:center;gap:6px;
   }
   .scroll-cue span.arrow{font-size:20px;animation:bob 1.8s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
 
   /* ---------- section card ---------- */
-  section{margin-top:64px;}
+  section{margin-top:60px;padding:0 0;}
+  .wrap > section:first-of-type{margin-top:60px;}
   .card{
+    position:relative;
     background:var(--paper);
     border:1px solid var(--line);
     border-radius:10px;
     box-shadow:var(--shadow);
-    padding:34px 26px;
+    padding:38px 26px 34px;
     text-align:center;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute; left:0; right:0; top:0;
+    height:6px;
+    background:repeating-linear-gradient(115deg,
+      var(--rose) 0 9px, var(--gold) 9px 15px, var(--paper) 15px 27px, var(--line) 27px 31px);
+    opacity:.8;
   }
   h2{
     font-weight:600;
@@ -166,7 +282,7 @@
     flex:none;
     width:42px;height:42px;
     border-radius:50%;
-    background:linear-gradient(160deg,#f2e9dd,#e7d9c8);
+    background:linear-gradient(160deg,var(--icon-bg1),var(--icon-bg2));
     display:flex;align-items:center;justify-content:center;
     font-size:19px;
     box-shadow:inset 0 0 0 1px var(--line);
@@ -175,7 +291,7 @@
     font-size:12.5px;
     letter-spacing:.15em;
     text-transform:uppercase;
-    color:var(--mauve-dark);
+    color:var(--rose);
     margin-bottom:2px;
   }
   .detail-value{
@@ -197,7 +313,7 @@
     text-decoration:none;
     border-bottom:1px solid var(--gold);
   }
-  .map-link:hover{color:var(--mauve-dark);border-color:var(--mauve-dark);}
+  .map-link:hover{color:var(--rose-deep);border-color:var(--rose-deep);}
 
   /* ---------- countdown ---------- */
   .countdown{
@@ -208,7 +324,7 @@
     margin-top:6px;
   }
   .cd-box{
-    background:linear-gradient(160deg,#fff,#f4ede2);
+    background:linear-gradient(160deg,var(--paper),var(--cd-bg2));
     border:1px solid var(--line);
     border-radius:8px;
     padding:14px 6px;
@@ -217,7 +333,7 @@
   .cd-num{
     font-size:30px;
     font-weight:600;
-    color:var(--mauve-dark);
+    color:var(--rose-deep);
     font-variant-numeric:tabular-nums;
   }
   .cd-label{
@@ -263,17 +379,16 @@
   }
   .btn:active{transform:scale(.97);}
   .btn-yes{
-    background:linear-gradient(160deg,#b79a6b,#9c8158);
-    color:#fff;
-    box-shadow:0 10px 22px -10px rgba(150,120,70,.6);
+    background:linear-gradient(135deg,var(--gold),var(--rose-deep));
+    color:var(--btn-yes-fg);
+    box-shadow:0 12px 26px -10px rgba(150,60,60,.5);
   }
   .btn-no{
     background:transparent;
-    color:var(--mauve-dark);
-    border-color:var(--mauve);
+    color:var(--rose);
+    border-color:var(--rose);
   }
   .btn:disabled{opacity:.55;cursor:default;transform:none;}
-  .btn.selected{box-shadow:inset 0 0 0 2px rgba(255,255,255,.4), 0 10px 22px -10px rgba(150,120,70,.6);}
 
   .rsvp-result{
     display:none;
@@ -283,15 +398,15 @@
     font-size:18px;
   }
   .rsvp-result.show{display:block;animation:fade .5s ease;}
-  .rsvp-result.yes{background:#f3ecdd;color:#6b5636;border:1px solid #e3d3ae;}
-  .rsvp-result.no{background:#f2ecec;color:#7a6a6a;border:1px solid #dccece;}
+  .rsvp-result.yes{background:var(--yes-bg);color:var(--yes-fg);border:1px solid var(--yes-border);}
+  .rsvp-result.no{background:var(--no-bg);color:var(--no-fg);border:1px solid var(--no-border);}
   @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
   .rsvp-reset{
     display:none;
     margin-top:14px;
     font-size:14px;
-    color:var(--mauve);
+    color:var(--gold);
     background:none;border:none;
     text-decoration:underline;
     cursor:pointer;
@@ -301,8 +416,9 @@
 
   footer{
     text-align:center;
-    margin-top:60px;
-    color:var(--mauve);
+    margin-top:56px;
+    padding-bottom:36px;
+    color:var(--rose);
     font-size:15px;
     font-style:italic;
   }
@@ -311,13 +427,23 @@
 </head>
 <body>
 
+<div class="stripe-border"></div>
+
 <div class="wrap">
 
   <header class="hero">
-    <div class="eyebrow">To'y taklifnomasi</div>
+    <div class="eyebrow">
+      <svg class="ic" viewBox="0 0 40 48"><path d="M20 4 C30 4 34 14 30 22 C27 28 20 30 14 27 C7 23 6 14 12 8 C14 6 17 4 20 4 Z"/><path d="M20 4 C24 4 27 7 27 11 C27 14 25 16 22 16" stroke-width="1"/><circle cx="17" cy="10" r="1.6" fill="currentColor" stroke="none"/></svg>
+      To'y taklifnomasi
+      <svg class="ic" viewBox="0 0 40 48" style="transform:scaleX(-1)"><path d="M20 4 C30 4 34 14 30 22 C27 28 20 30 14 27 C7 23 6 14 12 8 C14 6 17 4 20 4 Z"/><path d="M20 4 C24 4 27 7 27 11 C27 14 25 16 22 16" stroke-width="1"/><circle cx="17" cy="10" r="1.6" fill="currentColor" stroke="none"/></svg>
+    </div>
     <p class="intro-line">Hurmatli mehmon, sizni hayotimizdagi eng go'zal kunga — nikoh to'yimizga taklif qilamiz</p>
 
     <div class="frame">
+      <svg class="ic corner tl" viewBox="0 0 60 64"><path d="M30 40 C30 48 28 54 24 60"/><path d="M30 48 C24 46 18 48 15 54 C20 56 25 54 27 50"/><path d="M31 44 C37 42 43 44 46 50 C41 52 36 50 34 46"/><g transform="translate(30,26)"><ellipse rx="9" ry="6"/><ellipse rx="9" ry="6" transform="rotate(72)"/><ellipse rx="9" ry="6" transform="rotate(144)"/><ellipse rx="9" ry="6" transform="rotate(216)"/><ellipse rx="9" ry="6" transform="rotate(288)"/><circle r="3.2"/></g></svg>
+      <svg class="ic corner tr" viewBox="0 0 60 64"><path d="M30 40 C30 48 28 54 24 60"/><path d="M30 48 C24 46 18 48 15 54 C20 56 25 54 27 50"/><path d="M31 44 C37 42 43 44 46 50 C41 52 36 50 34 46"/><g transform="translate(30,26)"><ellipse rx="9" ry="6"/><ellipse rx="9" ry="6" transform="rotate(72)"/><ellipse rx="9" ry="6" transform="rotate(144)"/><ellipse rx="9" ry="6" transform="rotate(216)"/><ellipse rx="9" ry="6" transform="rotate(288)"/><circle r="3.2"/></g></svg>
+      <svg class="ic corner bl" viewBox="0 0 60 64"><path d="M30 40 C30 48 28 54 24 60"/><path d="M30 48 C24 46 18 48 15 54 C20 56 25 54 27 50"/><path d="M31 44 C37 42 43 44 46 50 C41 52 36 50 34 46"/><g transform="translate(30,26)"><ellipse rx="9" ry="6"/><ellipse rx="9" ry="6" transform="rotate(72)"/><ellipse rx="9" ry="6" transform="rotate(144)"/><ellipse rx="9" ry="6" transform="rotate(216)"/><ellipse rx="9" ry="6" transform="rotate(288)"/><circle r="3.2"/></g></svg>
+      <svg class="ic corner br" viewBox="0 0 60 64"><path d="M30 40 C30 48 28 54 24 60"/><path d="M30 48 C24 46 18 48 15 54 C20 56 25 54 27 50"/><path d="M31 44 C37 42 43 44 46 50 C41 52 36 50 34 46"/><g transform="translate(30,26)"><ellipse rx="9" ry="6"/><ellipse rx="9" ry="6" transform="rotate(72)"/><ellipse rx="9" ry="6" transform="rotate(144)"/><ellipse rx="9" ry="6" transform="rotate(216)"/><ellipse rx="9" ry="6" transform="rotate(288)"/><circle r="3.2"/></g></svg>
       <img src="assets/couple.jpeg" alt="Jaloliddin va Zilola">
     </div>
 
@@ -336,7 +462,10 @@
 
   <section id="details">
     <div class="card">
-      <div class="eyebrow">Tafsilotlar</div>
+      <div class="eyebrow">
+        <svg class="ic" viewBox="0 0 40 48"><path d="M20 4 C30 4 34 14 30 22 C27 28 20 30 14 27 C7 23 6 14 12 8 C14 6 17 4 20 4 Z"/><circle cx="17" cy="10" r="1.6" fill="currentColor" stroke="none"/></svg>
+        Tafsilotlar
+      </div>
       <h2>To'y marosimi</h2>
       <p class="section-sub">Quyidagi sana va manzilda kutamiz</p>
 
@@ -371,12 +500,15 @@
   </section>
 
   <div class="divider">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+    <svg class="ic" viewBox="0 0 60 64"><path d="M30 40 C30 48 28 54 24 60"/><path d="M30 48 C24 46 18 48 15 54 C20 56 25 54 27 50"/><path d="M31 44 C37 42 43 44 46 50 C41 52 36 50 34 46"/><g transform="translate(30,26)"><ellipse rx="9" ry="6"/><ellipse rx="9" ry="6" transform="rotate(72)"/><ellipse rx="9" ry="6" transform="rotate(144)"/><ellipse rx="9" ry="6" transform="rotate(216)"/><ellipse rx="9" ry="6" transform="rotate(288)"/><circle r="3.2"/></g></svg>
   </div>
 
   <section id="countdown">
     <div class="card">
-      <div class="eyebrow">Sanoq boshlandi</div>
+      <div class="eyebrow">
+        <svg class="ic" viewBox="0 0 40 48"><path d="M20 4 C30 4 34 14 30 22 C27 28 20 30 14 27 C7 23 6 14 12 8 C14 6 17 4 20 4 Z"/><circle cx="17" cy="10" r="1.6" fill="currentColor" stroke="none"/></svg>
+        Sanoq boshlandi
+      </div>
       <h2>To'yimizgacha</h2>
       <p class="section-sub">Har bir soniya bizni yaqinlashtiradi</p>
       <div class="countdown" id="countdown-boxes">
@@ -389,12 +521,15 @@
   </section>
 
   <div class="divider">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+    <svg class="ic" viewBox="0 0 60 64"><path d="M30 40 C30 48 28 54 24 60"/><path d="M30 48 C24 46 18 48 15 54 C20 56 25 54 27 50"/><path d="M31 44 C37 42 43 44 46 50 C41 52 36 50 34 46"/><g transform="translate(30,26)"><ellipse rx="9" ry="6"/><ellipse rx="9" ry="6" transform="rotate(72)"/><ellipse rx="9" ry="6" transform="rotate(144)"/><ellipse rx="9" ry="6" transform="rotate(216)"/><ellipse rx="9" ry="6" transform="rotate(288)"/><circle r="3.2"/></g></svg>
   </div>
 
   <section id="rsvp">
     <div class="card">
-      <div class="eyebrow">RSVP</div>
+      <div class="eyebrow">
+        <svg class="ic" viewBox="0 0 40 48"><path d="M20 4 C30 4 34 14 30 22 C27 28 20 30 14 27 C7 23 6 14 12 8 C14 6 17 4 20 4 Z"/><circle cx="17" cy="10" r="1.6" fill="currentColor" stroke="none"/></svg>
+        RSVP
+      </div>
       <h2>Kela olasizmi?</h2>
       <p class="section-sub">Iltimos, javobingizni bildiring — bu biz uchun juda muhim</p>
 
@@ -417,11 +552,13 @@
   </section>
 
   <footer>
-    <div class="divider"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+    <div class="divider"><svg class="ic" viewBox="0 0 60 64"><path d="M30 40 C30 48 28 54 24 60"/><path d="M30 48 C24 46 18 48 15 54 C20 56 25 54 27 50"/><path d="M31 44 C37 42 43 44 46 50 C41 52 36 50 34 46"/><g transform="translate(30,26)"><ellipse rx="9" ry="6"/><ellipse rx="9" ry="6" transform="rotate(72)"/><ellipse rx="9" ry="6" transform="rotate(144)"/><ellipse rx="9" ry="6" transform="rotate(216)"/><ellipse rx="9" ry="6" transform="rotate(288)"/><circle r="3.2"/></g></svg></div>
     Sizni kutamiz <span class="heart">&#10084;</span> Jaloliddin &amp; Zilola
   </footer>
 
 </div>
+
+<div class="stripe-border"></div>
 
 <script>
   // ---- Countdown ----
