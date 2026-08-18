@@ -6,106 +6,166 @@
 <title>Jaloliddin &amp; Zilola — To'y taklifnomasi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Great+Vibes&family=Marck+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#faf7f2;
-    --paper:#fffdfb;
-    --ink:#3a352f;
-    --ink-soft:#6b6259;
-    --mauve:#a99a9a;
-    --mauve-dark:#8a7876;
-    --gold:#b79a6b;
-    --line:#d9cfc4;
-    --shadow: 0 18px 45px -20px rgba(60,45,35,.35);
+    --navy:#123244;
+    --navy-deep:#0c2530;
+    --cream:#f7ecd8;
+    --cream-soft:#e6d6b3;
+    --card-ink:#28323a;
+    --card-ink-soft:#5c6b72;
+    --teal:#7fd0c2;
+    --teal-deep:#2f6b62;
+    --coral:#ef9a68;
+    --coral-deep:#8a4a24;
+    --red:#cf4a3d;
+    --gold-line:#c9a568;
+    --shadow: 0 22px 50px -18px rgba(6,18,24,.55);
+    --flower-tile: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2790%27%20height%3D%2790%27%3E%3Cg%20fill-rule%3D%27evenodd%27%3E%3Cpath%20d%3D%27M45%2045%20C40%2034%2040%2020%2045%2010%20C50%2020%2050%2034%2045%2045%20Z%27%20fill%3D%27%237fd0c2%27%20fill-opacity%3D%270.55%27/%3E%3Cpath%20d%3D%27M45%2045%20C40%2034%2040%2020%2045%2010%20C50%2020%2050%2034%2045%2045%20Z%27%20fill%3D%27%23ef9a68%27%20fill-opacity%3D%270.5%27%20transform%3D%27rotate%2890%2045%2045%29%27/%3E%3Cpath%20d%3D%27M45%2045%20C40%2034%2040%2020%2045%2010%20C50%2020%2050%2034%2045%2045%20Z%27%20fill%3D%27%237fd0c2%27%20fill-opacity%3D%270.55%27%20transform%3D%27rotate%28180%2045%2045%29%27/%3E%3Cpath%20d%3D%27M45%2045%20C40%2034%2040%2020%2045%2010%20C50%2020%2050%2034%2045%2045%20Z%27%20fill%3D%27%23ef9a68%27%20fill-opacity%3D%270.5%27%20transform%3D%27rotate%28270%2045%2045%29%27/%3E%3Ccircle%20cx%3D%2745%27%20cy%3D%2745%27%20r%3D%274%27%20fill%3D%27%23cf4a3d%27%20fill-opacity%3D%270.65%27/%3E%3C/g%3E%3C/svg%3E");
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:
-      radial-gradient(circle at 15% 8%, #f3ece2 0%, transparent 45%),
-      radial-gradient(circle at 85% 92%, #efe4d8 0%, transparent 45%),
-      var(--cream);
-    color:var(--ink);
+    background:var(--navy);
+    color:var(--cream);
     font-family:'Cormorant Garamond', 'Georgia', serif;
     font-size:19px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
   }
-  .wrap{max-width:560px;margin:0 auto;padding:0 22px 70px;}
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:var(--flower-tile);
+    background-repeat:repeat;
+    background-size:90px 90px;
+    opacity:.16;
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:0 22px 0;position:relative;z-index:1;}
+
+  /* ---------- foil edge trim ---------- */
+  .edge-trim{
+    height:8px;
+    background:linear-gradient(90deg, transparent, var(--gold-line) 15%, var(--coral) 50%, var(--gold-line) 85%, transparent);
+    position:relative;
+    z-index:1;
+  }
+
+  /* ---------- reusable ornament symbols ---------- */
+  .sprite{position:absolute;width:0;height:0;overflow:hidden;}
+
+  /* ---------- envelope flap w/ medallion ---------- */
+  .flap{
+    position:relative;
+    z-index:1;
+    background:var(--cream);
+    clip-path:polygon(0 0, 100% 0, 100% 62%, 50% 100%, 0 62%);
+    padding:34px 0 70px;
+    display:flex;
+    justify-content:center;
+  }
+  .flap svg{width:118px;height:118px;}
 
   /* ---------- ornament helpers ---------- */
   .divider{
     display:flex;align-items:center;gap:14px;
-    margin:26px auto;width:100%;max-width:340px;
-    color:var(--gold);
+    margin:30px auto;width:100%;max-width:340px;
+    color:var(--gold-line);
+    position:relative;z-index:1;
   }
   .divider::before,.divider::after{
     content:"";flex:1;height:1px;
-    background:linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent);
+    background:linear-gradient(90deg, transparent, var(--gold-line) 30%, var(--gold-line) 70%, transparent);
+    opacity:.6;
   }
-  .divider svg{flex:none;width:22px;height:22px;opacity:.85;}
+  .divider svg{flex:none;width:34px;height:34px;}
 
   .eyebrow{
     text-transform:uppercase;
-    letter-spacing:.32em;
-    font-size:12.5px;
-    color:var(--mauve-dark);
-    font-family: Georgia, serif;
+    letter-spacing:.28em;
+    font-size:13px;
+    font-family:'Cinzel', Georgia, serif;
+    font-weight:600;
+    color:var(--coral);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
   }
+  .eyebrow svg{width:15px;height:15px;color:var(--teal);flex:none;}
+  .card .eyebrow{color:var(--coral-deep);}
+  .card .eyebrow svg{color:var(--teal-deep);}
 
   /* ---------- hero ---------- */
   .hero{
-    padding-top:52px;
+    padding-top:28px;
     text-align:center;
   }
-  .hero .eyebrow{margin-bottom:10px;}
+  .hero .eyebrow{margin-bottom:12px;}
   .hero .intro-line{
     font-style:italic;
-    color:var(--ink-soft);
+    color:var(--cream-soft);
     font-size:17px;
-    max-width:380px;margin:0 auto 22px;
+    max-width:380px;margin:0 auto 28px;
   }
 
-  .frame{
+  .photo-card{
     position:relative;
     margin:0 auto;
-    max-width:330px;
+    max-width:320px;
     border-radius:6px;
     padding:14px;
-    background:var(--paper);
+    background:var(--cream);
     box-shadow:var(--shadow);
-    border:1px solid var(--line);
+    border:1px solid var(--gold-line);
   }
-  .frame::before{
+  .photo-card::before{
     content:"";
     position:absolute; inset:6px;
-    border:1px solid var(--gold);
-    opacity:.55;
+    border:1px solid var(--gold-line);
+    opacity:.7;
     border-radius:3px;
     pointer-events:none;
   }
-  .frame img{
+  .photo-card img{
     display:block;width:100%;height:auto;border-radius:2px;
   }
+  .photo-card .corner{
+    position:absolute;
+    width:26px;height:26px;
+  }
+  .photo-card .corner.tl{top:-9px;left:-9px;}
+  .photo-card .corner.tr{top:-9px;right:-9px;transform:scaleX(-1);}
+  .photo-card .corner.bl{bottom:-9px;left:-9px;transform:scaleY(-1);}
+  .photo-card .corner.br{bottom:-9px;right:-9px;transform:scale(-1,-1);}
 
   .names{
-    margin:30px 0 4px;
-    font-family:'Great Vibes', cursive;
-    font-size:64px;
+    margin:32px 0 4px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:58px;
     line-height:1.15;
-    color:var(--mauve-dark);
+    color:var(--cream);
   }
   .names .amp{
-    display:block;
-    font-family:'Marck Script', cursive;
-    font-size:28px;
-    color:var(--gold);
-    margin:2px 0;
+    display:inline-block;
+    font-size:.45em;
+    font-style:normal;
+    font-family:'Cinzel', serif;
+    letter-spacing:.15em;
+    color:var(--coral);
+    vertical-align:middle;
+    margin:0 10px;
   }
   .tagline{
-    color:var(--ink-soft);
+    color:var(--cream-soft);
     font-size:18px;
     max-width:400px;
     margin:14px auto 0;
@@ -116,30 +176,40 @@
     font-size:13px;
     letter-spacing:.25em;
     text-transform:uppercase;
-    color:var(--mauve);
+    color:var(--teal);
     display:flex;flex-direction:column;align-items:center;gap:6px;
   }
-  .scroll-cue span.arrow{font-size:20px;animation:bob 1.8s ease-in-out infinite;}
+  .scroll-cue span.arrow{font-size:20px;animation:bob 1.8s ease-in-out infinite;color:var(--coral);}
   @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
 
   /* ---------- section card ---------- */
-  section{margin-top:64px;}
+  section{margin-top:56px;}
   .card{
-    background:var(--paper);
-    border:1px solid var(--line);
+    position:relative;
+    background:var(--cream);
+    color:var(--card-ink);
+    border:1px solid var(--gold-line);
     border-radius:10px;
     box-shadow:var(--shadow);
-    padding:34px 26px;
+    padding:36px 26px 32px;
     text-align:center;
+    overflow:hidden;
+  }
+  .card::before{
+    content:"";
+    position:absolute; left:0; right:0; top:0;
+    height:5px;
+    background:linear-gradient(90deg, var(--teal), var(--coral), var(--red));
+    opacity:.85;
   }
   h2{
     font-weight:600;
     font-size:28px;
     margin:0 0 6px;
-    color:var(--ink);
+    color:var(--navy);
   }
   .section-sub{
-    color:var(--ink-soft);
+    color:var(--card-ink-soft);
     font-style:italic;
     margin-bottom:22px;
     font-size:16.5px;
@@ -159,33 +229,33 @@
     gap:16px;
     align-items:flex-start;
     padding:16px 4px;
-    border-bottom:1px dashed var(--line);
+    border-bottom:1px dashed var(--cream-soft);
   }
   .detail-item:last-child{border-bottom:none;}
   .detail-icon{
     flex:none;
     width:42px;height:42px;
     border-radius:50%;
-    background:linear-gradient(160deg,#f2e9dd,#e7d9c8);
+    background:linear-gradient(160deg,#fff9ee,var(--cream-soft));
     display:flex;align-items:center;justify-content:center;
     font-size:19px;
-    box-shadow:inset 0 0 0 1px var(--line);
+    box-shadow:inset 0 0 0 1px var(--gold-line);
   }
   .detail-label{
     font-size:12.5px;
     letter-spacing:.15em;
     text-transform:uppercase;
-    color:var(--mauve-dark);
+    color:var(--coral-deep);
     margin-bottom:2px;
   }
   .detail-value{
     font-size:20px;
-    color:var(--ink);
+    color:var(--navy);
   }
   .detail-value small{
     display:block;
     font-size:14.5px;
-    color:var(--ink-soft);
+    color:var(--card-ink-soft);
     font-style:italic;
     margin-top:2px;
   }
@@ -193,11 +263,11 @@
     display:inline-block;
     margin-top:6px;
     font-size:14.5px;
-    color:var(--gold);
+    color:var(--teal-deep);
     text-decoration:none;
-    border-bottom:1px solid var(--gold);
+    border-bottom:1px solid var(--teal-deep);
   }
-  .map-link:hover{color:var(--mauve-dark);border-color:var(--mauve-dark);}
+  .map-link:hover{color:var(--coral-deep);border-color:var(--coral-deep);}
 
   /* ---------- countdown ---------- */
   .countdown{
@@ -208,8 +278,8 @@
     margin-top:6px;
   }
   .cd-box{
-    background:linear-gradient(160deg,#fff,#f4ede2);
-    border:1px solid var(--line);
+    background:linear-gradient(160deg,#fff9ee,var(--cream-soft));
+    border:1px solid var(--gold-line);
     border-radius:8px;
     padding:14px 6px;
     width:74px;
@@ -217,14 +287,14 @@
   .cd-num{
     font-size:30px;
     font-weight:600;
-    color:var(--mauve-dark);
+    color:var(--navy);
     font-variant-numeric:tabular-nums;
   }
   .cd-label{
     font-size:11px;
     letter-spacing:.12em;
     text-transform:uppercase;
-    color:var(--ink-soft);
+    color:var(--card-ink-soft);
     margin-top:2px;
   }
 
@@ -237,13 +307,13 @@
     padding:13px 16px;
     font-family:inherit;
     font-size:17px;
-    border:1px solid var(--line);
+    border:1px solid var(--gold-line);
     border-radius:8px;
-    background:var(--cream);
-    color:var(--ink);
+    background:#fffdf8;
+    color:var(--card-ink);
     text-align:center;
   }
-  .rsvp-input:focus{outline:none;border-color:var(--gold);}
+  .rsvp-input:focus{outline:none;border-color:var(--coral);}
   .rsvp-btns{
     display:flex;
     flex-direction:column;
@@ -263,17 +333,16 @@
   }
   .btn:active{transform:scale(.97);}
   .btn-yes{
-    background:linear-gradient(160deg,#b79a6b,#9c8158);
-    color:#fff;
-    box-shadow:0 10px 22px -10px rgba(150,120,70,.6);
+    background:linear-gradient(135deg,var(--coral),var(--red));
+    color:#fffaf3;
+    box-shadow:0 12px 26px -10px rgba(180,70,50,.55);
   }
   .btn-no{
     background:transparent;
-    color:var(--mauve-dark);
-    border-color:var(--mauve);
+    color:var(--teal-deep);
+    border-color:var(--teal-deep);
   }
   .btn:disabled{opacity:.55;cursor:default;transform:none;}
-  .btn.selected{box-shadow:inset 0 0 0 2px rgba(255,255,255,.4), 0 10px 22px -10px rgba(150,120,70,.6);}
 
   .rsvp-result{
     display:none;
@@ -283,15 +352,15 @@
     font-size:18px;
   }
   .rsvp-result.show{display:block;animation:fade .5s ease;}
-  .rsvp-result.yes{background:#f3ecdd;color:#6b5636;border:1px solid #e3d3ae;}
-  .rsvp-result.no{background:#f2ecec;color:#7a6a6a;border:1px solid #dccece;}
+  .rsvp-result.yes{background:#f7ddc7;color:var(--coral-deep);border:1px solid #e3b98c;}
+  .rsvp-result.no{background:#d9efe9;color:var(--teal-deep);border:1px solid #a9d9cd;}
   @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
   .rsvp-reset{
     display:none;
     margin-top:14px;
     font-size:14px;
-    color:var(--mauve);
+    color:var(--coral-deep);
     background:none;border:none;
     text-decoration:underline;
     cursor:pointer;
@@ -301,23 +370,79 @@
 
   footer{
     text-align:center;
-    margin-top:60px;
-    color:var(--mauve);
+    margin-top:56px;
+    padding-bottom:36px;
+    color:var(--cream-soft);
     font-size:15px;
     font-style:italic;
+    position:relative;z-index:1;
   }
-  footer .heart{color:var(--gold);}
+  footer .heart{color:var(--coral);}
 </style>
 </head>
 <body>
 
+<svg class="sprite" aria-hidden="true">
+  <symbol id="ic-medallion" viewBox="0 0 120 120">
+    <rect x="20" y="20" width="80" height="80" rx="10" transform="rotate(45 60 60)" fill="none" style="stroke:var(--gold-line)" stroke-width="1.5"/>
+    <circle cx="60" cy="60" r="46" fill="none" style="stroke:var(--gold-line)" stroke-width="1"/>
+    <g>
+      <path d="M60 60 C55 46 55 28 60 14 C65 28 65 46 60 60 Z" style="fill:var(--teal)"/>
+      <path d="M60 60 C55 46 55 28 60 14 C65 28 65 46 60 60 Z" style="fill:var(--coral)" transform="rotate(45 60 60)"/>
+      <path d="M60 60 C55 46 55 28 60 14 C65 28 65 46 60 60 Z" style="fill:var(--teal)" transform="rotate(90 60 60)"/>
+      <path d="M60 60 C55 46 55 28 60 14 C65 28 65 46 60 60 Z" style="fill:var(--coral)" transform="rotate(135 60 60)"/>
+      <path d="M60 60 C55 46 55 28 60 14 C65 28 65 46 60 60 Z" style="fill:var(--teal)" transform="rotate(180 60 60)"/>
+      <path d="M60 60 C55 46 55 28 60 14 C65 28 65 46 60 60 Z" style="fill:var(--coral)" transform="rotate(225 60 60)"/>
+      <path d="M60 60 C55 46 55 28 60 14 C65 28 65 46 60 60 Z" style="fill:var(--teal)" transform="rotate(270 60 60)"/>
+      <path d="M60 60 C55 46 55 28 60 14 C65 28 65 46 60 60 Z" style="fill:var(--coral)" transform="rotate(315 60 60)"/>
+    </g>
+    <circle cx="60" cy="60" r="10" style="fill:var(--red)"/>
+    <circle cx="60" cy="60" r="10" fill="none" style="stroke:var(--gold-line)" stroke-width="1"/>
+  </symbol>
+  <symbol id="ic-medallion-mini" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="40" fill="none" style="stroke:var(--gold-line)" stroke-width="1"/>
+    <g>
+      <path d="M60 60 C56 50 56 36 60 26 C64 36 64 50 60 60 Z" style="fill:var(--teal)"/>
+      <path d="M60 60 C56 50 56 36 60 26 C64 36 64 50 60 60 Z" style="fill:var(--coral)" transform="rotate(60 60 60)"/>
+      <path d="M60 60 C56 50 56 36 60 26 C64 36 64 50 60 60 Z" style="fill:var(--teal)" transform="rotate(120 60 60)"/>
+      <path d="M60 60 C56 50 56 36 60 26 C64 36 64 50 60 60 Z" style="fill:var(--coral)" transform="rotate(180 60 60)"/>
+      <path d="M60 60 C56 50 56 36 60 26 C64 36 64 50 60 60 Z" style="fill:var(--teal)" transform="rotate(240 60 60)"/>
+      <path d="M60 60 C56 50 56 36 60 26 C64 36 64 50 60 60 Z" style="fill:var(--coral)" transform="rotate(300 60 60)"/>
+    </g>
+    <circle cx="60" cy="60" r="7" style="fill:var(--red)"/>
+  </symbol>
+  <symbol id="ic-dot-flower" viewBox="0 0 40 40">
+    <g>
+      <path d="M20 20 C17 14 17 8 20 3 C23 8 23 14 20 20 Z" style="fill:var(--teal)"/>
+      <path d="M20 20 C17 14 17 8 20 3 C23 8 23 14 20 20 Z" style="fill:var(--coral)" transform="rotate(90 20 20)"/>
+      <path d="M20 20 C17 14 17 8 20 3 C23 8 23 14 20 20 Z" style="fill:var(--teal)" transform="rotate(180 20 20)"/>
+      <path d="M20 20 C17 14 17 8 20 3 C23 8 23 14 20 20 Z" style="fill:var(--coral)" transform="rotate(270 20 20)"/>
+      <circle cx="20" cy="20" r="3.2" style="fill:var(--red)"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="edge-trim"></div>
+
+<div class="flap">
+  <svg viewBox="0 0 120 120"><use href="#ic-medallion"/></svg>
+</div>
+
 <div class="wrap">
 
   <header class="hero">
-    <div class="eyebrow">To'y taklifnomasi</div>
+    <div class="eyebrow">
+      <svg viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
+      To'y taklifnomasi
+      <svg viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
+    </div>
     <p class="intro-line">Hurmatli mehmon, sizni hayotimizdagi eng go'zal kunga — nikoh to'yimizga taklif qilamiz</p>
 
-    <div class="frame">
+    <div class="photo-card">
+      <svg class="corner tl" viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
+      <svg class="corner tr" viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
+      <svg class="corner bl" viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
+      <svg class="corner br" viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
       <img src="assets/couple.jpeg" alt="Jaloliddin va Zilola">
     </div>
 
@@ -336,7 +461,10 @@
 
   <section id="details">
     <div class="card">
-      <div class="eyebrow">Tafsilotlar</div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
+        Tafsilotlar
+      </div>
       <h2>To'y marosimi</h2>
       <p class="section-sub">Quyidagi sana va manzilda kutamiz</p>
 
@@ -371,12 +499,15 @@
   </section>
 
   <div class="divider">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+    <svg viewBox="0 0 120 120"><use href="#ic-medallion-mini"/></svg>
   </div>
 
   <section id="countdown">
     <div class="card">
-      <div class="eyebrow">Sanoq boshlandi</div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
+        Sanoq boshlandi
+      </div>
       <h2>To'yimizgacha</h2>
       <p class="section-sub">Har bir soniya bizni yaqinlashtiradi</p>
       <div class="countdown" id="countdown-boxes">
@@ -389,12 +520,15 @@
   </section>
 
   <div class="divider">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg>
+    <svg viewBox="0 0 120 120"><use href="#ic-medallion-mini"/></svg>
   </div>
 
   <section id="rsvp">
     <div class="card">
-      <div class="eyebrow">RSVP</div>
+      <div class="eyebrow">
+        <svg viewBox="0 0 40 40"><use href="#ic-dot-flower"/></svg>
+        RSVP
+      </div>
       <h2>Kela olasizmi?</h2>
       <p class="section-sub">Iltimos, javobingizni bildiring — bu biz uchun juda muhim</p>
 
@@ -417,13 +551,64 @@
   </section>
 
   <footer>
-    <div class="divider"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 21s-7-4.5-9.5-9C.5 8 2 4 6 4c2.5 0 4.5 1.5 6 3.5C13.5 5.5 15.5 4 18 4c4 0 5.5 4 3.5 8-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+    <div class="divider"><svg viewBox="0 0 120 120"><use href="#ic-medallion-mini"/></svg></div>
     Sizni kutamiz <span class="heart">&#10084;</span> Jaloliddin &amp; Zilola
   </footer>
 
 </div>
 
+<div class="edge-trim"></div>
+
 <script>
+  // ============================================================
+  // Google Form RSVP wiring (optional).
+  // 1) Create a Google Form with a short-answer question ("Ismingiz")
+  //    and a multiple-choice question ("Kela olasizmi?") whose two
+  //    options are exactly "Ha, albatta boraman" and
+  //    "Afsuski, kela olmayman".
+  // 2) In the form editor: ⋮ menu -> "Get pre-filled link" -> fill
+  //    sample answers -> "Get link" -> copy it.
+  // 3) From that URL, copy the form id (.../forms/d/e/FORM_ID/viewform)
+  //    and the two "entry.NNNNNNN" query param names, and paste them
+  //    below. Leave FORM_ACTION_URL empty to keep RSVP local-only.
+  // ============================================================
+  var FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfBTHn2Iix_WWW9RgElUMfH1fGGXv0ZaGA-R-QvpI4YpC4MwQ/formResponse";
+  var FORM_ENTRY_NAME = "entry.1391731277";
+  var FORM_ENTRY_ANSWER = "entry.1843682144";
+
+  function submitToGoogleForm(name, answerLabel){
+    if(!FORM_ACTION_URL || !FORM_ENTRY_NAME || !FORM_ENTRY_ANSWER) return;
+    var iframeName = 'rsvp-target-' + Date.now();
+    var iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    var form = document.createElement('form');
+    form.action = FORM_ACTION_URL;
+    form.method = 'POST';
+    form.target = iframeName;
+
+    var nameField = document.createElement('input');
+    nameField.type = 'hidden';
+    nameField.name = FORM_ENTRY_NAME;
+    nameField.value = name;
+    form.appendChild(nameField);
+
+    var answerField = document.createElement('input');
+    answerField.type = 'hidden';
+    answerField.name = FORM_ENTRY_ANSWER;
+    answerField.value = answerLabel;
+    form.appendChild(answerField);
+
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(function(){
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
+    }, 2000);
+  }
+
   // ---- Countdown ----
   var WEDDING_DATE = new Date("2026-09-01T18:00:00+05:00").getTime();
 
@@ -459,6 +644,10 @@
   var nameNoSpan = document.getElementById('name-no');
 
   var STORAGE_KEY = 'wedding_rsvp_jaloliddin_zilola';
+  var ANSWER_LABELS = {
+    yes: "Ha, albatta boraman",
+    no: "Afsuski, kela olmayman"
+  };
 
   function showResult(answer){
     var name = nameInput.value.trim();
@@ -480,13 +669,15 @@
   }
 
   function saveRSVP(answer){
+    var name = nameInput.value.trim();
     try{
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         answer: answer,
-        name: nameInput.value.trim(),
+        name: name,
         ts: Date.now()
       }));
     }catch(e){}
+    submitToGoogleForm(name, ANSWER_LABELS[answer]);
   }
 
   btnYes.addEventListener('click', function(){
