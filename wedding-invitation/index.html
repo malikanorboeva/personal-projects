@@ -302,7 +302,7 @@
   .rsvp-input{
     width:100%;
     max-width:340px;
-    margin:0 auto 20px;
+    margin:0 auto;
     display:block;
     padding:13px 16px;
     font-family:inherit;
@@ -314,12 +314,22 @@
     text-align:center;
   }
   .rsvp-input:focus{outline:none;border-color:var(--coral);}
+  .rsvp-input.invalid{border-color:var(--red);}
+  .rsvp-error{
+    display:none;
+    max-width:340px;
+    margin:8px auto 0;
+    font-size:14px;
+    color:var(--red);
+    font-style:italic;
+  }
+  .rsvp-error.show{display:block;}
   .rsvp-btns{
     display:flex;
     flex-direction:column;
     gap:14px;
     max-width:340px;
-    margin:0 auto;
+    margin:20px auto 0;
   }
   .btn{
     font-family:inherit;
@@ -528,7 +538,8 @@
       <h2>Kela olasizmi?</h2>
       <p class="section-sub">Iltimos, javobingizni bildiring — bu biz uchun juda muhim</p>
 
-      <input type="text" id="guest-name" class="rsvp-input" placeholder="Ismingiz (ixtiyoriy)">
+      <input type="text" id="guest-name" class="rsvp-input" placeholder="Ismingiz">
+      <p class="rsvp-error" id="rsvp-error">Iltimos, ismingizni kiriting</p>
 
       <div class="rsvp-btns" id="rsvp-btns">
         <button class="btn btn-yes" id="btn-yes">&#10003; Ha, albatta boraman</button>
@@ -636,6 +647,7 @@
   var resultNo = document.getElementById('result-no');
   var resetBtn = document.getElementById('rsvp-reset-btn');
   var nameInput = document.getElementById('guest-name');
+  var nameError = document.getElementById('rsvp-error');
   var nameYesSpan = document.getElementById('name-yes');
   var nameNoSpan = document.getElementById('name-no');
 
@@ -676,20 +688,40 @@
     submitToGoogleForm(name, ANSWER_LABELS[answer]);
   }
 
+  function handleRSVP(answer){
+    if(!nameInput.value.trim()){
+      nameInput.classList.add('invalid');
+      nameError.classList.add('show');
+      nameInput.focus();
+      return;
+    }
+    nameInput.classList.remove('invalid');
+    nameError.classList.remove('show');
+    saveRSVP(answer);
+    showResult(answer);
+  }
+
+  nameInput.addEventListener('input', function(){
+    if(nameInput.value.trim()){
+      nameInput.classList.remove('invalid');
+      nameError.classList.remove('show');
+    }
+  });
+
   btnYes.addEventListener('click', function(){
-    saveRSVP('yes');
-    showResult('yes');
+    handleRSVP('yes');
   });
 
   btnNo.addEventListener('click', function(){
-    saveRSVP('no');
-    showResult('no');
+    handleRSVP('no');
   });
 
   resetBtn.addEventListener('click', function(){
     try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
     btnsWrap.style.display = 'flex';
     nameInput.disabled = false;
+    nameInput.classList.remove('invalid');
+    nameError.classList.remove('show');
     resultYes.classList.remove('show');
     resultNo.classList.remove('show');
     resetBtn.classList.remove('show');
